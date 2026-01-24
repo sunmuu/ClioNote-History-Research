@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ClioNote | 深度档案研究工作台</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Noto+Serif+SC:wght@600;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "cream": "#F8F9FA",
+                        "cream-bg": "#FFFFFF",
+                        "cream-paper": "#FBFBFB",
+                        "charcoal": "#1A1A1A",
+                        "ash": "#666666",
+                        "accent": "#4A5568",
+                        "border-muted": "#E2E8F0",
+                        "primary": "#2D3748",
+                        "ink-dark": "#171923",
+                        "ink-muted": "#718096",
+                        "border-soft": "#EDF2F7",
+                        "accent-sage": "#718096",
+                        // 新增学术综述模式配色
+                        "slate-review": {
+                            50: "#F8FAFC",
+                            100: "#F1F5F9", // 背景色
+                            200: "#E2E8F0",
+                            300: "#CBD5E1",
+                            600: "#475569", // 强调色
+                            700: "#334155", // 文字色
+                            800: "#1E293B"
+                        }
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "system-ui", "sans-serif"],
+                        "serif": ["'Noto Serif SC'", "serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-cream text-charcoal font-sans antialiased h-screen overflow-hidden;
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            @apply bg-charcoal/10 rounded-full border-4 border-transparent bg-clip-padding hover:bg-charcoal/20 transition-colors;
+        }
+        
+        .custom-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0,0,0,0.1) transparent;
+        }
+
+        /* 统一的过渡动画 */
+        * {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+                        background-color 0.4s ease;
+        }
+
+        /* 输入框去箭头 */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "html-to-image": "https://esm.sh/html-to-image@^1.11.11"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
