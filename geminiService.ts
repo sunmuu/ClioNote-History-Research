@@ -31,7 +31,7 @@ const getSystemInstruction = (mode: ThemeMode, type: 'summary' | 'analysis') => 
 };
 
 export const getHistoricalSummary = async (content: string, mode: ThemeMode) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: process.env.VITE_GEMINI_API_KEY; });
   const systemInstruction = getSystemInstruction(mode, 'summary');
 
   try {
@@ -51,7 +51,7 @@ export const getHistoricalSummary = async (content: string, mode: ThemeMode) => 
 };
 
 export const analyzeTimelineContext = async (events: any[], mode: ThemeMode) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: process.env.VITE_GEMINI_API_KEY });
   const context = events.map(e => `[${e.year} ${e.era}] ${e.title}: ${e.description}`).join('\n');
   const systemInstruction = getSystemInstruction(mode, 'analysis');
 
@@ -72,7 +72,7 @@ export const analyzeTimelineContext = async (events: any[], mode: ThemeMode) => 
 };
 
 export const parseHistoricalText = async (text: string, mode: ThemeMode) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: process.env.VITE_GEMINI_API_KEY });
   const tagInstruction = mode === ThemeMode.REVIEW
     ? "针对学术综述，优先提取：理论模型、方法论、研究对象标签。"
     : mode === ThemeMode.FAN
@@ -106,7 +106,7 @@ export const parseHistoricalText = async (text: string, mode: ThemeMode) => {
 };
 
 export const createResearchChat = (context: string, mode: ThemeMode): Chat => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: process.env.VITE_GEMINI_API_KEY });
   let roleDesc = "专业史学助理";
   if (mode === ThemeMode.FAN) roleDesc = "资深同人太太/剧情解析官";
   if (mode === ThemeMode.REVIEW) roleDesc = "学术导师/审稿专家";
